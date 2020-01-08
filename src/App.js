@@ -3,7 +3,7 @@ import "./App.css";
 import axios from "axios";
 
 
-function App(props) {
+function App() {
 
     const [images, setImages] = useState([]);
 
@@ -23,13 +23,15 @@ function App(props) {
  return (
     <div className="App">
       <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label="rocket">🚀!</span>
+         <span role="img" aria-label="rocket">🚀</span>
       </p>
         <div>
             <h1 className="title">{images.title}</h1>
             {/*broken image*/}
-            <img src={images.url} alt=""/>
+            <div className="imageContainer">
+
+            <img src={images.url} alt={images.title}/>
+            </div>
 
             <h3>Author: </h3>
             <p>{images.copyright}</p>
@@ -38,7 +40,7 @@ function App(props) {
 
             {/*<p>{images.copyright}</p>*/}
             <h3>Date: </h3>
-            <p>{images.date}</p>
+            <p id="imageDate">{images.date}</p>
             
         </div>
         <div>
