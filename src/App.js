@@ -3,20 +3,23 @@ import "./App.css";
 import axios from "axios";
 
 
-function App() {
+function App(props) {
 
     const [images, setImages] = useState([]);
 
     useEffect(() => {
 
     axios
-        .get('https://api.nasa.gov/planetary/apod?api_key=CWMpwYsCugMG5FPhzRMRaWklHLe3WzYhMQlklR2s')
+        //Promise from NASA API (APOD)
+        .get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
         .then( res => {
             setImages(res.data);
-            console.log(res)
+            // console.log( 'here is the image', res.data.url);
+
         })
         .catch( err => {
             console.log(err.message)
+
         });
     }, []);
 
@@ -27,17 +30,21 @@ function App() {
         app! Have fun <span role="img" aria-label="rocket">🚀!</span>
       </p>
         <div>
-            <h1>{images.title}</h1>
-            {/*image here below*/}
+            <h1 className="title">{images.title}</h1>
             <img src="{images.url}" alt=""/>
-            <img src="https://apod.nasa.gov/apod/image/2001/IC405hp_ColesHelm_960.jpg" alt=""/>
+            <h3>Author: </h3>
+            <p>{images.copyright}</p>
+            {/*image here below*/}
+
 
             {/*<p>{images.copyright}</p>*/}
+            <h3>Date: </h3>
             <p>{images.date}</p>
             
         </div>
         <div>
-            <p>{images.explanation}</p>
+            <h3>Description: </h3>
+            <p className="explain">{images.explanation}</p>
 
         </div>
     </div>
