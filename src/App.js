@@ -7,14 +7,11 @@ function App(props) {
 
     const [images, setImages] = useState([]);
 
-    useEffect(() => {
-
-    axios
-        //Promise from NASA API (APOD)
-        .get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
+    useEffect( () => {
+        axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
         .then( res => {
             setImages(res.data);
-            // console.log( 'here is the image', res.data.url);
+
 
         })
         .catch( err => {
@@ -31,7 +28,9 @@ function App(props) {
       </p>
         <div>
             <h1 className="title">{images.title}</h1>
-            <img src="{images.url}" alt=""/>
+            {/*broken image*/}
+            <img src={images.url} alt=""/>
+
             <h3>Author: </h3>
             <p>{images.copyright}</p>
             {/*image here below*/}
