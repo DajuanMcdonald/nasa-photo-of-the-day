@@ -1,20 +1,25 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import "./ImageCard.css";
+import {Button} from "reactstrap";
+import Alert from "reactstrap/lib/Alert";
+// import ButtonDropdown from "reactstrap/es/ButtonDropdown";
 
 export default function CreateCard(props) {
     const [images, setImages] = useState({});
-    useEffect((props) => {
+    useEffect(() => {
         axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
             .then( res => {
                 setImages(res.data);
                 console.log(props);
+
 
             }).catch( err => {console.log(err.message);})
     }, []);
 
     return (
         <div className="App">
+            <div className="container-nav"><nav> || || || <a href="">||</a> <a href="">||</a></nav></div>
             <p>
                 <span role="img" aria-label="rocket">🚀</span>
             </p>
@@ -30,6 +35,7 @@ export default function CreateCard(props) {
                     </div>
 
                      <div>
+                         <span>{images.data}</span>
 
                         <p className="explain">{images.explanation}</p>
 
@@ -38,9 +44,10 @@ export default function CreateCard(props) {
                 </div>
 
                 <h3>Date: </h3>
+                <Alert>{images.copyright}</Alert>
 
 
-                <button id="imageDate">{images.date}</button>
+                <Button color="primary" size="lg">{images.date}</Button>
 
 
             </div>
