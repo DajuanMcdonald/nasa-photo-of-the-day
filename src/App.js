@@ -1,15 +1,6 @@
-import React from "react";
-import "./App.css";
+import React, {useState, useEffect} from "react";
+import "./ImageCard.css";
+import axios from "axios";
+import ImageCard from "./ImageCard";
 
-function App() {
-  return (
-    <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun 🚀!
-      </p>
-    </div>
-  );
-}
 
-export default App;

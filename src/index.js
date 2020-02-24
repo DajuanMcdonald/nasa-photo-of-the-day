@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+// import App from "./App";
+import CreateCard from "./ImageCard";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+ReactDOM.render(<CreateCard />, document.getElementById("root"));
